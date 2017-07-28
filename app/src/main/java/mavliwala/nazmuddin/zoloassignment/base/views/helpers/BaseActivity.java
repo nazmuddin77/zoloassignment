@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
 import mavliwala.nazmuddin.zoloassignment.app.ZoloApp;
 import mavliwala.nazmuddin.zoloassignment.base.di.HasComponent;
 import mavliwala.nazmuddin.zoloassignment.base.di.components.BaseActivityComponent;
@@ -22,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity implements HasCompo
     private BaseActivityComponent component;
 
     @Inject
-    Navigator navigator;
+    public Navigator navigator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity implements HasCompo
                 .baseActivityModule(new BaseActivityModule(this))
                 .build();
         this.component.inject(this);
+        ButterKnife.bind(this);
     }
 
     @Override

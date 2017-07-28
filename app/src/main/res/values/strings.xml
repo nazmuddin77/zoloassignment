@@ -7,4 +7,8 @@
     <string name="cta_create_acc">Create account</string>
     <string name="forgot_password_msg">Forgot \n Password?</string>
     <string name="forgot_password_helper_msg">Please enter your register email</string>
+    <string name="register">Register</string>
+    <string name="register_helper_msg">Please register with zolo to continue</string>
+    <string name="cta_register">Register</string>
+    <string name="cta_truecaller">Autofill via truecaller</string>
 </resources>
