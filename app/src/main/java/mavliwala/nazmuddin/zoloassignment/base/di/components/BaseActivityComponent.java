@@ -16,6 +16,8 @@ import mavliwala.nazmuddin.zoloassignment.base.views.helpers.BaseActivity;
 import mavliwala.nazmuddin.zoloassignment.base.views.helpers.Navigator;
 import mavliwala.nazmuddin.zoloassignment.login.di.LoginComponent;
 import mavliwala.nazmuddin.zoloassignment.login.di.LoginModule;
+import mavliwala.nazmuddin.zoloassignment.register.di.RegisterComponent;
+import mavliwala.nazmuddin.zoloassignment.register.di.RegisterModule;
 
 /**
  * Created by nazmuddinmavliwala on 02/03/17.
@@ -53,4 +55,6 @@ public interface  BaseActivityComponent {
     void inject(BaseActivity baseActivity);
 
     LoginComponent provideLoginComponent(LoginModule module);
+
+    RegisterComponent provideRegisterComponent(RegisterModule module);
 }

@@ -21,10 +21,10 @@ import rx.functions.Func1;
 public class LoginDataRepository implements LoginRepository {
 
     private final DaoSession daoSession;
-    private final UserEntityConverter converter;
+    private final UserEntityToUserConverter converter;
 
     @Inject
-    public LoginDataRepository(DaoSession daoSession,UserEntityConverter converter) {
+    public LoginDataRepository(DaoSession daoSession,UserEntityToUserConverter converter) {
         this.daoSession = daoSession;
         this.converter = converter;
     }

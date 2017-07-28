@@ -8,7 +8,7 @@ import mavliwala.nazmuddin.domain.login.models.User;
  * Created by nazmuddinmavliwala on 28/07/17.
  */
 
-public class UserEntityConverter implements Converter<UserEntity,User> {
+public class UserEntityToUserConverter implements Converter<UserEntity,User> {
 
     @Override
     public User convert(UserEntity data) {
