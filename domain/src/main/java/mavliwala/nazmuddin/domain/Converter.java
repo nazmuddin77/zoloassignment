@@ -4,5 +4,7 @@ package mavliwala.nazmuddin.domain;
  * Created by nazmuddinmavliwala on 28/07/17.
  */
 
-public class MyClass {
+public interface Converter<FROM,TO> {
+
+    TO convert(FROM data);
 }

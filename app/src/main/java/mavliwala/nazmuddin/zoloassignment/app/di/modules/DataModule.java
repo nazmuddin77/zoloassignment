@@ -12,6 +12,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import mavliwala.nazmuddin.data.database.DatabaseManager;
+import mavliwala.nazmuddin.data.database.entities.DaoSession;
 import mavliwala.nazmuddin.data.disc.ApplicationContext;
 import mavliwala.nazmuddin.data.disc.SharedPrefManager;
 import mavliwala.nazmuddin.data.disc.SharedPrefService;
@@ -95,6 +97,12 @@ public class DataModule {
     @Singleton
     public SharedPrefService provideSharedPrefService(@ApplicationContext Context context) {
         return new SharedPrefManager(context);
+    }
+
+    @Provides
+    @Singleton
+    public DaoSession provideDaosession(DatabaseManager manager) {
+        return manager.getDaoSession();
     }
 
     @Provides

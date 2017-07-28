@@ -10,6 +10,7 @@ import java.io.File;
 import javax.inject.Singleton;
 
 import dagger.Component;
+import mavliwala.nazmuddin.data.database.entities.DaoSession;
 import mavliwala.nazmuddin.data.disc.ApplicationContext;
 import mavliwala.nazmuddin.data.disc.SharedPrefService;
 import mavliwala.nazmuddin.data.network.NetworkService;
@@ -47,4 +48,6 @@ public interface ApplicationComponent {
     SharedPrefService getSharedPrefService();
 
     File getCacheDir();
+
+    DaoSession provideDaoSession();
 }

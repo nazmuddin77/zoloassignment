@@ -11,4 +11,8 @@
     <string name="register_helper_msg">Please register with zolo to continue</string>
     <string name="cta_register">Register</string>
     <string name="cta_truecaller">Autofill via truecaller</string>
+    <string name="user_not_found_error">User not found, please register to continue.</string>
+    <string name="invalid_credentials_error">Invalid password, please try again.</string>
+    <string name="something_went_wrong">Something went wrong, please try again later.</string>
+    <string name="empty_mobile_error">Mobile number cannot be empty</string>
 </resources>

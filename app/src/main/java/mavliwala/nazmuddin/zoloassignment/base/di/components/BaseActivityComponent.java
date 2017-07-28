@@ -3,6 +3,7 @@ package mavliwala.nazmuddin.zoloassignment.base.di.components;
 import android.content.Context;
 
 import dagger.Component;
+import mavliwala.nazmuddin.data.database.entities.DaoSession;
 import mavliwala.nazmuddin.data.disc.ApplicationContext;
 import mavliwala.nazmuddin.data.disc.SharedPrefService;
 import mavliwala.nazmuddin.data.network.NetworkService;
@@ -13,6 +14,8 @@ import mavliwala.nazmuddin.zoloassignment.app.di.modules.RxModule;
 import mavliwala.nazmuddin.zoloassignment.base.di.modules.BaseActivityModule;
 import mavliwala.nazmuddin.zoloassignment.base.views.helpers.BaseActivity;
 import mavliwala.nazmuddin.zoloassignment.base.views.helpers.Navigator;
+import mavliwala.nazmuddin.zoloassignment.login.di.LoginComponent;
+import mavliwala.nazmuddin.zoloassignment.login.di.LoginModule;
 
 /**
  * Created by nazmuddinmavliwala on 02/03/17.
@@ -45,5 +48,9 @@ public interface  BaseActivityComponent {
 
     NetworkService provideService();
 
+    DaoSession provideDaoSession();
+
     void inject(BaseActivity baseActivity);
+
+    LoginComponent provideLoginComponent(LoginModule module);
 }
