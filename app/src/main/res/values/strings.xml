@@ -5,4 +5,6 @@
     <string name="cta_login">LOG IN</string>
     <string name="cta_forgot_password">Forgot password?</string>
     <string name="cta_create_acc">Create account</string>
+    <string name="forgot_password_msg">Forgot \n Password?</string>
+    <string name="forgot_password_helper_msg">Please enter your register email</string>
 </resources>
