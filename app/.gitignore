@@ -3,10 +3,8 @@
 .build/
 *.pom
 .gradle/
-gradle/
+*.iml
 local.properties
 gradlew.bat
 build/
-*.iml
-/gradlew
-/gradle.properties
+
