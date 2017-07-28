@@ -45,4 +45,5 @@ public interface  BaseActivityComponent {
 
     NetworkService provideService();
 
+    void inject(BaseActivity baseActivity);
 }
