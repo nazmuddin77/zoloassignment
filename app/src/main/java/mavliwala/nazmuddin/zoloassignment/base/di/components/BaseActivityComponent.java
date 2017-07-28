@@ -14,6 +14,8 @@ import mavliwala.nazmuddin.zoloassignment.app.di.modules.RxModule;
 import mavliwala.nazmuddin.zoloassignment.base.di.modules.BaseActivityModule;
 import mavliwala.nazmuddin.zoloassignment.base.views.helpers.BaseActivity;
 import mavliwala.nazmuddin.zoloassignment.base.views.helpers.Navigator;
+import mavliwala.nazmuddin.zoloassignment.forgotpassword.di.ForgotPasswordComponent;
+import mavliwala.nazmuddin.zoloassignment.forgotpassword.di.ForgotPasswordModule;
 import mavliwala.nazmuddin.zoloassignment.login.di.LoginComponent;
 import mavliwala.nazmuddin.zoloassignment.login.di.LoginModule;
 import mavliwala.nazmuddin.zoloassignment.register.di.RegisterComponent;
@@ -57,4 +59,6 @@ public interface  BaseActivityComponent {
     LoginComponent provideLoginComponent(LoginModule module);
 
     RegisterComponent provideRegisterComponent(RegisterModule module);
+
+    ForgotPasswordComponent provideForgotPasswordComponent(ForgotPasswordModule forgotPasswordModule);
 }
