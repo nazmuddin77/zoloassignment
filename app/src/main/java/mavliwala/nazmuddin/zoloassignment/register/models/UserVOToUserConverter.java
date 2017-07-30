@@ -16,6 +16,7 @@ public class UserVOToUserConverter implements Converter<UserVO,User> {
                 .setEmail(data.getEmail())
                 .setReferralCode(data.getReferralCode())
                 .setMobile(data.getMobile())
+                .setPassword(data.getPassword())
                 .createUser();
     }
 }

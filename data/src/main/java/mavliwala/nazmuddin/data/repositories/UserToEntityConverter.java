@@ -17,6 +17,7 @@ public class UserToEntityConverter implements Converter<User,UserEntity> {
         entity.setName(data.getName());
         entity.setMobile(data.getMobile());
         entity.setEmail(data.getEmail());
+        entity.setPassword(data.getPassword());
         entity.setReferralCode(data.getReferralCode());
         return entity;
     }

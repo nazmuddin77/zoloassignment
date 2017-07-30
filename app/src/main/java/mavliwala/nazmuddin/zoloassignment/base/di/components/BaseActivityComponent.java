@@ -6,7 +6,6 @@ import dagger.Component;
 import mavliwala.nazmuddin.data.database.entities.DaoSession;
 import mavliwala.nazmuddin.data.disc.ApplicationContext;
 import mavliwala.nazmuddin.data.disc.SharedPrefService;
-import mavliwala.nazmuddin.data.network.NetworkService;
 import mavliwala.nazmuddin.zoloassignment.app.di.components.ApplicationComponent;
 import mavliwala.nazmuddin.zoloassignment.app.di.identifiers.ActivityContext;
 import mavliwala.nazmuddin.zoloassignment.app.di.identifiers.ScopedActivity;
@@ -53,8 +52,6 @@ public interface  BaseActivityComponent {
     SharedPrefService sharedPrefService();
 
     Navigator getNavigator();
-
-    NetworkService provideService();
 
     DaoSession provideDaoSession();
 

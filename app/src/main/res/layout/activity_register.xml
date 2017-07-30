@@ -61,6 +61,10 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/et_mobile"
+                    android:maxLines="1"
+                    android:inputType="number"
+                    android:maxLength="10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/phone_number_hint"/>
@@ -86,9 +90,12 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/et_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone_number_hint"/>
+                    android:hint="@string/email_hint"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -111,9 +118,12 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/et_name"
+                    android:maxLines="1"
+                    android:inputType="textCapWords"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone_number_hint"/>
+                    android:hint="@string/name_hint"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -136,9 +146,12 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/et_password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone_number_hint"/>
+                    android:hint="@string/password_hint"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -161,13 +174,17 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/et_referral_code"
+                    android:maxLines="1"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/phone_number_hint"/>
+                    android:hint="@string/referral_hint"/>
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
         <Button
+            android:id="@+id/bt_register"
             android:layout_marginTop="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

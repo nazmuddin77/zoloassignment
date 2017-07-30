@@ -48,7 +48,7 @@ public class RegisterUseCase extends UseCase<RegisterRepository> {
                             //if email already exists raise exception, else register
                             return repository.register(user)
                             .compose(RegisterUseCase.this.<Response>applySchedulers());
-                        return Observable.error(UserWithEmailAleradyExistsException.createInstance());
+                        return Observable.error(UserWithEmailAlreadyExistsException.createInstance());
                     }
                 })
                 .switchMap(new Func1<Response, Observable<Boolean>>() {

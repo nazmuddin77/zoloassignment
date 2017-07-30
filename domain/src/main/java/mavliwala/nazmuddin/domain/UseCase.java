@@ -1,5 +1,7 @@
 package mavliwala.nazmuddin.domain;
 
+import java.util.concurrent.TimeUnit;
+
 import mavliwala.nazmuddin.domain.executers.ExecutionThread;
 import mavliwala.nazmuddin.domain.executers.PostExecutionThread;
 import rx.Observable;
@@ -47,7 +49,9 @@ public abstract class UseCase<T extends Repository> {
         return new Observable.Transformer<T, T>() {
             @Override
             public Observable<T> call(Observable<T> observable) {
-                return observable.subscribeOn(executionThread.getScheduler())
+                return observable
+                        .delay(2000, TimeUnit.MILLISECONDS)
+                        .subscribeOn(executionThread.getScheduler())
                         .observeOn(postExecutionThread.getScheduler());
             }
         };

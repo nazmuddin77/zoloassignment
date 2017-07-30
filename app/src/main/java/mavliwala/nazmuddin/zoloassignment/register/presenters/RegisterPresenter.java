@@ -4,14 +4,14 @@ import javax.inject.Inject;
 
 import mavliwala.nazmuddin.domain.login.models.User;
 import mavliwala.nazmuddin.domain.register.RegisterUseCase;
-import mavliwala.nazmuddin.domain.register.UserWithEmailAleradyExistsException;
-import mavliwala.nazmuddin.domain.register.UserWithMobileAlreadyExistException;
 import mavliwala.nazmuddin.zoloassignment.R;
 import mavliwala.nazmuddin.zoloassignment.app.di.identifiers.ChildActivity;
 import mavliwala.nazmuddin.zoloassignment.base.presenters.BasePresenter;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVO;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVOToUserConverter;
 import mavliwala.nazmuddin.zoloassignment.register.views.RegisterView;
+import mavliwala.nazmuddin.zoloassignment.utils.ErrorMessageFactory;
+import mavliwala.nazmuddin.zoloassignment.utils.ValidationUtils;
 import rx.Subscriber;
 
 /**
@@ -34,10 +34,40 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
     }
 
     public void Validate(UserVO userVO) {
-
+        //validate name
+        String name = userVO.getName();
+        if (name == null || name.isEmpty()) {
+            view.showError(getString(R.string.empty_name_error));
+            return;
+        }
+        if (!ValidationUtils.isValidName(name)) {
+            view.showError(getString(R.string.invalid_name_error));
+            return;
+        }
+        //validate mobile
+        String mobile = userVO.getMobile();
+        if (mobile == null || mobile.isEmpty()) {
+            view.showError(getString(R.string.empty_mobile_error));
+            return;
+        }
+        if (!ValidationUtils.isValidMobile(mobile)) {
+            view.showError(getString(R.string.invalid_mobile_error));
+            return;
+        }
+        //validate email
+        String email = userVO.getEmail();
+        if (email == null || email.isEmpty()) {
+            view.showError(getString(R.string.empty_email_error));
+            return;
+        }
+        if (!ValidationUtils.isValidEmail(email)) {
+            view.showError(getString(R.string.invalid_email_error));
+            return;
+        }
     }
 
-    public void register(UserVO userVO) {
+    public void register(final UserVO userVO) {
+        view.showLoading();
         User user = this.converter.convert(userVO);
         this.useCase.register(user, new Subscriber<Boolean>() {
             @Override
@@ -45,17 +75,14 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
 
             @Override
             public void onError(Throwable e) {
-                if (e instanceof UserWithMobileAlreadyExistException)
-                    view.showError(R.string.mobile_already_exists_error);
-                else if (e instanceof UserWithEmailAleradyExistsException)
-                    view.showError(R.string.email_already_exists_error);
-                else view.showError(R.string.something_went_wrong);
-
+                view.hideLoading();
+                view.showError(ErrorMessageFactory.create(e));
             }
 
             @Override
             public void onNext(Boolean aBoolean) {
-
+                view.hideLoading();
+                view.navigateToLogin(userVO);
             }
         });
     }

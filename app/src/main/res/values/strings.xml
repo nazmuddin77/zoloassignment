@@ -15,6 +15,14 @@
     <string name="invalid_credentials_error">Invalid password, please try again.</string>
     <string name="something_went_wrong">Something went wrong, please try again later.</string>
     <string name="empty_mobile_error">Mobile number cannot be empty</string>
-    <string name="mobile_already_exists_error">USer with goven mobile already exists.</string>
+    <string name="mobile_already_exists_error">User with given mobile already exists.</string>
     <string name="email_already_exists_error">User with email already exists.</string>
+    <string name="empty_name_error">Name cannot be empty</string>
+    <string name="invalid_name_error">Invalid name</string>
+    <string name="invalid_mobile_error">Invalid mobile number</string>
+    <string name="empty_email_error">Email cannot be empty</string>
+    <string name="invalid_email_error">Invalid email</string>
+    <string name="email_hint">EMAIL</string>
+    <string name="name_hint">NAME</string>
+    <string name="referral_hint">REFERRAL CODE</string>
 </resources>

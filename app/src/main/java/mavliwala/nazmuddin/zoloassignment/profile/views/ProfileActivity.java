@@ -16,9 +16,6 @@ import mavliwala.nazmuddin.zoloassignment.profile.presenters.ProfilePresenter;
 
 public class ProfileActivity extends BaseActivity {
 
-    @Inject
-    ProfilePresenter presenter;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

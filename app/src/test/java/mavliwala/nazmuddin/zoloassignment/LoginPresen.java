@@ -13,14 +13,12 @@ import mavliwala.nazmuddin.domain.login.LoginUseCase;
 import mavliwala.nazmuddin.zoloassignment.login.presenters.LoginPresenter;
 import mavliwala.nazmuddin.zoloassignment.login.views.LoginView;
 
-import static org.mockito.Mockito.verify;
-
 /**
  * Created by nazmuddinmavliwala on 28/07/17.
  */
 
 @RunWith(MockitoJUnitRunner.class)
-public class LoginPresenterTest {
+public class LoginPresen {
 
     @Mock
     LoginView view;
@@ -37,6 +35,5 @@ public class LoginPresenterTest {
     @Test
     public void testValidate_ShouldFailWhenMobileAndPasswordIsNull() throws Exception {
         this.preseter.validate(null,null);
-        verify(this.view).showError(R.string.empty_mobile_error);
     }
 }

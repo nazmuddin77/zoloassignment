@@ -1,7 +1,5 @@
 package mavliwala.nazmuddin.zoloassignment.login.views;
 
-import android.support.annotation.StringRes;
-
 import mavliwala.nazmuddin.zoloassignment.base.presenters.BaseView;
 
 /**
@@ -9,5 +7,4 @@ import mavliwala.nazmuddin.zoloassignment.base.presenters.BaseView;
  */
 
 public interface LoginView extends BaseView {
-    void showError(@StringRes int resId);
 }
