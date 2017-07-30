@@ -1,0 +1,10 @@
+*.hprof
+.idea/
+.build/
+*.pom
+.gradle/
+*.iml
+local.properties
+gradlew.bat
+build/
+
