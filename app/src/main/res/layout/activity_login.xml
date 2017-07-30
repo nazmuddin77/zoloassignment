@@ -107,7 +107,6 @@
     </android.support.v4.widget.NestedScrollView>
     
     <android.support.design.widget.AppBarLayout
-        app:sabl_target_id="@id/nsv_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
