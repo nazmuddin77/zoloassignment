@@ -11,4 +11,8 @@ public interface LoginView extends BaseView {
     void navigateToProfileActivity(UserVO user);
 
     void navigateToForgotPasswordActivity(UserVO userVO);
+
+    void onSuccessFullValidation(String mobile, String password);
+
+    void onSuccessFullForgotPasswordValidation(String mobile);
 }

@@ -8,4 +8,7 @@ import mavliwala.nazmuddin.zoloassignment.base.presenters.BaseView;
 
 public interface ForgotPasswordView extends BaseView {
     void emailUpdatedPassword(String password);
+
+    void onSuccessFullValidation();
+
 }

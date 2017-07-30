@@ -59,12 +59,12 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @OnClick(R.id.bt_login)
     public void onLoginClick() {
-        this.presenter.login(getValue(R.id.et_mobile),getValue(R.id.et_password));
+        this.presenter.validateLogin(getValue(R.id.et_mobile),getValue(R.id.et_password));
     }
 
     @OnClick(R.id.bt_forgot_password)
     public void onForgotPasswordClick() {
-        this.presenter.recognizeMobile(getValue(R.id.et_mobile));
+        this.presenter.validateForgotPassword(getValue(R.id.et_mobile));
     }
 
     @Override
@@ -157,5 +157,15 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
                     }
                 });
+    }
+
+    @Override
+    public void onSuccessFullValidation(String mobile, String password) {
+        this.presenter.login(mobile,password);
+    }
+
+    @Override
+    public void onSuccessFullForgotPasswordValidation(String mobile) {
+        this.presenter.recognizeMobile(mobile);
     }
 }

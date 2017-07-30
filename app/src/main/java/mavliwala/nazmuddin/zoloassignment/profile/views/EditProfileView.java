@@ -9,4 +9,6 @@ import mavliwala.nazmuddin.zoloassignment.register.models.UserVO;
 
 public interface EditProfileView extends BaseView {
     void returnUpdatedProfile(UserVO userVO);
+
+    void onSuccessFullValidation(UserVO userVO);
 }

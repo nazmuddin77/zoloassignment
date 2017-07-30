@@ -146,4 +146,5 @@ public class UserEntity {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getUserEntityDao() : null;
     }
+
 }

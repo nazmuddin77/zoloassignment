@@ -23,13 +23,13 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPrefService service = ZoloApp.getComponent().getSharedPrefService();
-        if (service.retrieveValue(LOGGED_IN,false)) this.navigator.navigate(LoginActivity.class);
-        else {
-            Long userId = (long) service.retrieveValue(USER_ID, -1);
+        if (service.retrieveValue(LOGGED_IN,false)) {
+            long userId = service.retrieveValue(USER_ID, Long.valueOf(-1));
             Intent intent = new Intent(SplashActivity.this, ProfileActivity.class);
             intent.putExtra(USER_ID,userId);
             startActivity(intent);
         }
+        else this.navigator.navigate(LoginActivity.class);
         finish();
     }
 

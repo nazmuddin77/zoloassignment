@@ -35,4 +35,8 @@ public class ValidationUtils {
     public static boolean isValidEmail(@NonNull String email) {
         return isValidRegex(EMAIL_PATTERN,email);
     }
+
+    public static boolean isValidPassword(String password) {
+        return password.length() >= 6;
+    }
 }

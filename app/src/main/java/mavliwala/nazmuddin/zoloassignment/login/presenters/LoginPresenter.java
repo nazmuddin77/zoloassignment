@@ -10,6 +10,7 @@ import mavliwala.nazmuddin.zoloassignment.base.presenters.BasePresenter;
 import mavliwala.nazmuddin.zoloassignment.login.views.LoginView;
 import mavliwala.nazmuddin.zoloassignment.profile.presenters.UserToUserVOConverter;
 import mavliwala.nazmuddin.zoloassignment.utils.ErrorMessageFactory;
+import mavliwala.nazmuddin.zoloassignment.utils.ValidationUtils;
 import rx.Subscriber;
 
 /**
@@ -31,12 +32,36 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         this.converter = converter;
     }
 
-    public void validate(String mobile, String password) {
-        boolean valis = false;
+    public void validateLogin(String mobile, String password) {
         if (mobile == null || mobile.isEmpty()) {
             view.showError(getString(R.string.empty_mobile_error));
+            return;
         }
+        if (!ValidationUtils.isValidMobile(mobile)) {
+            view.showError(getString(R.string.invalid_mobile_error));
+            return;
+        }
+        if (password == null || password.isEmpty()) {
+            view.showError(getString(R.string.empty_password_error));
+            return;
+        }
+        if (!ValidationUtils.isValidPassword(password)) {
+            view.showError(getString(R.string.invalid_password_error));
+            return;
+        }
+        view.onSuccessFullValidation(mobile,password);
+    }
 
+    public void validateForgotPassword(String mobile) {
+        if (mobile == null || mobile.isEmpty()) {
+            view.showError(getString(R.string.empty_mobile_error));
+            return;
+        }
+        if (!ValidationUtils.isValidMobile(mobile)) {
+            view.showError(getString(R.string.invalid_mobile_error));
+            return;
+        }
+        view.onSuccessFullForgotPasswordValidation(mobile);
     }
 
     public void login(String mobile, String password) {

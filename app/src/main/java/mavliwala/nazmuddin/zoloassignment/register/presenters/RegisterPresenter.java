@@ -33,18 +33,8 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
         this.converter = converter;
     }
 
-    public void Validate(UserVO userVO) {
-        //validate name
-        String name = userVO.getName();
-        if (name == null || name.isEmpty()) {
-            view.showError(getString(R.string.empty_name_error));
-            return;
-        }
-        if (!ValidationUtils.isValidName(name)) {
-            view.showError(getString(R.string.invalid_name_error));
-            return;
-        }
-        //validate mobile
+    public void validate(UserVO userVO) {
+        //validateLogin mobile
         String mobile = userVO.getMobile();
         if (mobile == null || mobile.isEmpty()) {
             view.showError(getString(R.string.empty_mobile_error));
@@ -54,7 +44,8 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
             view.showError(getString(R.string.invalid_mobile_error));
             return;
         }
-        //validate email
+
+        //validateLogin email
         String email = userVO.getEmail();
         if (email == null || email.isEmpty()) {
             view.showError(getString(R.string.empty_email_error));
@@ -64,6 +55,28 @@ public class RegisterPresenter extends BasePresenter<RegisterView> {
             view.showError(getString(R.string.invalid_email_error));
             return;
         }
+
+        //validateLogin name
+        String name = userVO.getName();
+        if (name == null || name.isEmpty()) {
+            view.showError(getString(R.string.empty_name_error));
+            return;
+        }
+        if (!ValidationUtils.isValidName(name)) {
+            view.showError(getString(R.string.invalid_name_error));
+            return;
+        }
+
+        String password = userVO.getPassword();
+        if (password == null || password.isEmpty()) {
+            view.showError(getString(R.string.empty_password_error));
+            return;
+        }
+        if (!ValidationUtils.isValidPassword(password)) {
+            view.showError(getString(R.string.invalid_password_error));
+            return;
+        }
+        view.onSuccessFullValidation(userVO);
     }
 
     public void register(final UserVO userVO) {

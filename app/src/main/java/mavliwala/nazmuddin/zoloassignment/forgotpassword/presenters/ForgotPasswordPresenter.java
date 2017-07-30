@@ -4,11 +4,13 @@ import javax.inject.Inject;
 
 import mavliwala.nazmuddin.domain.forgotpassword.ForgotPasswordUseCase;
 import mavliwala.nazmuddin.domain.login.models.User;
+import mavliwala.nazmuddin.zoloassignment.R;
 import mavliwala.nazmuddin.zoloassignment.app.di.identifiers.ChildActivity;
 import mavliwala.nazmuddin.zoloassignment.base.presenters.BasePresenter;
 import mavliwala.nazmuddin.zoloassignment.forgotpassword.views.ForgotPasswordView;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVO;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVOToUserConverter;
+import mavliwala.nazmuddin.zoloassignment.utils.ValidationUtils;
 import rx.Subscriber;
 
 /**
@@ -31,6 +33,15 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordView> {
     }
 
     public void validate(String email) {
+        if (email == null || email.isEmpty()) {
+            view.showError(getString(R.string.empty_email_error));
+            return;
+        }
+        if (!ValidationUtils.isValidEmail(email)) {
+            view.showError(getString(R.string.invalid_email_error));
+            return;
+        }
+        view.onSuccessFullValidation();
 
     }
 

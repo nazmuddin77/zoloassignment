@@ -44,8 +44,7 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
 
     @OnClick(R.id.bt_update)
     public void onUpdateClick() {
-        String newPassword = getNewPassword();
-        this.presenter.updatePassword(getUserVO(newPassword));
+        this.presenter.validate(getValue(R.id.et_email));
 
     }
 
@@ -102,6 +101,13 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
                         finish();
                     }
                 });
+    }
+
+    @Override
+    public void onSuccessFullValidation() {
+        String newPassword = getNewPassword();
+        UserVO userVO = getUserVO(newPassword);
+        this.presenter.updatePassword(userVO);
     }
 
     private String getNewPassword() {

@@ -34,6 +34,6 @@ public class LoginPresen {
 
     @Test
     public void testValidate_ShouldFailWhenMobileAndPasswordIsNull() throws Exception {
-        this.preseter.validate(null,null);
+        this.preseter.validateLogin(null,null);
     }
 }

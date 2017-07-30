@@ -41,7 +41,7 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
 
     @OnClick(R.id.bt_register)
     public void onRegisterClick() {
-        this.presenter.register(constructUser());
+        this.presenter.validate(constructUser());
     }
 
     @Override
@@ -72,5 +72,10 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
         intent.putExtra(USER, Parcels.wrap(userVO));
         setResult(RESULT_OK,intent);
         finish();
+    }
+
+    @Override
+    public void onSuccessFullValidation(UserVO userVO) {
+        this.presenter.register(userVO);
     }
 }

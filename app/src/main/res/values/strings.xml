@@ -29,4 +29,6 @@
     <string name="edit">EDIT PROFILE</string>
     <string name="update">UPDATE</string>
     <string name="logout">LOGOUT</string>
+    <string name="empty_password_error">Password cannot be empty</string>
+    <string name="invalid_password_error">Password should be atleast 6 digit long.</string>
 </resources>

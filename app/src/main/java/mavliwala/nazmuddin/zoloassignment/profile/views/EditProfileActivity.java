@@ -40,7 +40,7 @@ public class EditProfileActivity extends BaseActivity implements EditProfileView
 
     @OnClick(R.id.bt_update)
     public void onUpdateClick() {
-        this.presenter.update(getUserVO());
+        this.presenter.validate(getUserVO());
     }
 
     private UserVO getUserVO() {
@@ -86,5 +86,10 @@ public class EditProfileActivity extends BaseActivity implements EditProfileView
         intent.putExtra(USER, Parcels.wrap(userVO));
         setResult(RESULT_OK,intent);
         finish();
+    }
+
+    @Override
+    public void onSuccessFullValidation(UserVO userVO) {
+        this.presenter.update(userVO);
     }
 }

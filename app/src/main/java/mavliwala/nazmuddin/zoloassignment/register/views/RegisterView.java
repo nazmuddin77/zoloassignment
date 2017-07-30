@@ -9,4 +9,6 @@ import mavliwala.nazmuddin.zoloassignment.register.models.UserVO;
 
 public interface RegisterView extends BaseView {
     void navigateToLogin(UserVO userVO);
+
+    void onSuccessFullValidation(UserVO userVO);
 }
