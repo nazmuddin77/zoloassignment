@@ -16,4 +16,8 @@ public interface LoginRepository extends Repository {
     Observable<List<User>> recognizeUser(String mobile);
 
     Observable<Response<User>> login(String mobile, String password);
+
+    void setLogin(boolean b);
+
+    void setActiveProfile(Long id);
 }

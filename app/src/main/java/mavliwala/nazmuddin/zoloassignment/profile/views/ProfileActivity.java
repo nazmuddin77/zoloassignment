@@ -17,6 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import butterknife.BindViews;
+import butterknife.OnClick;
 import io.reactivex.ObservableSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
@@ -24,6 +25,7 @@ import io.reactivex.functions.Function;
 import io.reactivex.functions.Predicate;
 import mavliwala.nazmuddin.zoloassignment.R;
 import mavliwala.nazmuddin.zoloassignment.base.views.helpers.BaseActivity;
+import mavliwala.nazmuddin.zoloassignment.login.views.LoginActivity;
 import mavliwala.nazmuddin.zoloassignment.profile.di.ProfileModule;
 import mavliwala.nazmuddin.zoloassignment.profile.presenters.ProfilePresenter;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVO;
@@ -53,6 +55,13 @@ public class ProfileActivity extends BaseActivity implements ProfileView {
     @Inject
     ProfilePresenter presenter;
     private UserVO user;
+
+    @OnClick(R.id.bt_logout)
+    public void onLogoutClick() {
+        this.presenter.logout();
+        this.navigator.navigate(LoginActivity.class);
+        finish();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

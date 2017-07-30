@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import mavliwala.nazmuddin.data.database.entities.DaoSession;
 import mavliwala.nazmuddin.data.database.entities.UserEntity;
+import mavliwala.nazmuddin.data.disc.SharedPrefService;
 import mavliwala.nazmuddin.domain.login.models.User;
 import mavliwala.nazmuddin.domain.profile.ProfileRepository;
 import rx.Observable;
@@ -16,11 +17,15 @@ import rx.functions.Func1;
 public class ProfileDataRepository implements ProfileRepository {
 
     private final DaoSession daoSession;
+    private final SharedPrefService prefService;
     private final UserEntityToUserConverter converter;
 
     @Inject
-    public ProfileDataRepository(DaoSession daoSession, UserEntityToUserConverter converter) {
+    public ProfileDataRepository(DaoSession daoSession,
+                                 SharedPrefService prefService,
+                                 UserEntityToUserConverter converter) {
         this.daoSession = daoSession;
+        this.prefService = prefService;
         this.converter = converter;
     }
 
@@ -35,5 +40,10 @@ public class ProfileDataRepository implements ProfileRepository {
                         return converter.convert(userEntity);
                     }
                 });
+    }
+
+    @Override
+    public void clearPref() {
+        this.prefService.clearPref();
     }
 }

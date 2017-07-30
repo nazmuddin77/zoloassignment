@@ -10,4 +10,7 @@ import rx.Observable;
 
 public interface ProfileRepository extends Repository {
     Observable<User> getUser(Long userId);
+
+    void clearPref();
+
 }

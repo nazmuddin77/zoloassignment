@@ -26,4 +26,8 @@ public class ProfileUseCase extends UseCase<ProfileRepository>{
                 .compose(this.<User>applySchedulers())
                 .subscribe(action1);
     }
+
+    public void logout() {
+        this.repository.clearPref();
+    }
 }

@@ -38,4 +38,8 @@ public class ProfilePresenter extends BasePresenter<ProfileView> {
             }
         });
     }
+
+    public void logout() {
+        this.useCase.logout();
+    }
 }

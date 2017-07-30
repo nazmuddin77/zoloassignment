@@ -11,6 +11,7 @@ import mavliwala.nazmuddin.domain.login.models.Response;
 import mavliwala.nazmuddin.domain.login.models.User;
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Action1;
 import rx.functions.Func1;
 
 /**
@@ -49,6 +50,13 @@ public class LoginUseCase extends UseCase<LoginRepository> {
                             return Observable.just(user);
                         }
                         return Observable.error(new UnknownError());
+                    }
+                })
+                .doOnNext(new Action1<User>() {
+                    @Override
+                    public void call(User user) {
+                        repository.setLogin(true);
+                        repository.setActiveProfile(user.getId());
                     }
                 })
                 .subscribe(subscriber);
