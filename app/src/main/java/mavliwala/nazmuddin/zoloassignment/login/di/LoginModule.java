@@ -8,6 +8,7 @@ import mavliwala.nazmuddin.domain.login.LoginRepository;
 import mavliwala.nazmuddin.zoloassignment.app.di.identifiers.ChildActivity;
 import mavliwala.nazmuddin.zoloassignment.login.views.LoginActivity;
 import mavliwala.nazmuddin.zoloassignment.login.views.LoginView;
+import mavliwala.nazmuddin.zoloassignment.profile.presenters.UserToUserVOConverter;
 
 /**
  * Created by nazmuddinmavliwala on 28/07/17.
@@ -40,5 +41,11 @@ public class LoginModule {
     @Provides
     public LoginView provideView() {
         return this.activity;
+    }
+
+    @ChildActivity
+    @Provides
+    public UserToUserVOConverter provideDomainToViewConverter() {
+        return new UserToUserVOConverter();
     }
 }

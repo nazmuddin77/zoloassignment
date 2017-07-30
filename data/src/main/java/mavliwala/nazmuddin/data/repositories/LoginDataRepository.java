@@ -52,8 +52,8 @@ public class LoginDataRepository implements LoginRepository {
     }
 
     @Override
-    public Observable<Response> login(String mobile, String password) {
-        Response response;
+    public Observable<Response<User>> login(String mobile, String password) {
+        Response<User> response;
         List<UserEntity> users = this.daoSession
                 .getUserEntityDao()
                 .queryBuilder()
@@ -61,7 +61,10 @@ public class LoginDataRepository implements LoginRepository {
                 .list();
         UserEntity userEntity = users.get(0);
         String pass = userEntity.getPassword();
-        response = pass.equals(password) ? new Response.Success(): new Response.Error();
+        response = pass.equals(password) ?
+                new Response.Success<>(this.converter.convert(userEntity)) :
+                new Response.Error<User>();
         return Observable.just(response);
+
     }
 }

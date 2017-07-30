@@ -27,6 +27,13 @@
         <activity android:name=".forgotpassword.views.ForgotPasswordActivity"
                   android:screenOrientation="portrait">
         </activity>
+
+        <activity android:name=".profile.views.ProfileActivity"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".profile.views.EditProfileActivity"
+                  android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

@@ -17,5 +17,5 @@ public interface RegisterRepository extends Repository {
 
     Observable<List<User>> getUserWithEmail(String email);
 
-    Observable<Response> register(User user);
+    Observable<Response<User>> register(User user);
 }

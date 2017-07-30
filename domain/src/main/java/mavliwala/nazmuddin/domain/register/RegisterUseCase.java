@@ -41,23 +41,23 @@ public class RegisterUseCase extends UseCase<RegisterRepository> {
                         return Observable.error(UserWithMobileAlreadyExistException.createInstance());
                     }
                 })
-                .switchMap(new Func1<List<User>, Observable<Response>>() {
+                .switchMap(new Func1<List<User>, Observable<Response<User>>>() {
                     @Override
-                    public Observable<Response> call(List<User> users) {
+                    public Observable<Response<User>> call(List<User> users) {
                         if (users == null || users.size() == 0)
                             //if email already exists raise exception, else register
                             return repository.register(user)
-                            .compose(RegisterUseCase.this.<Response>applySchedulers());
+                            .compose(RegisterUseCase.this.<Response<User>>applySchedulers());
                         return Observable.error(UserWithEmailAlreadyExistsException.createInstance());
                     }
                 })
-                .switchMap(new Func1<Response, Observable<Boolean>>() {
+                .switchMap(new Func1<Response<User>, Observable<Boolean>>() {
                     @Override
-                    public Observable<Boolean> call(Response response) {
+                    public Observable<Boolean> call(Response<User> response) {
                         //if registration is successfull return true, else return
                         // IllegalStateException
-                        if (response instanceof Response.Success) return Observable.just(true);
-                        else return Observable.error(new IllegalStateException("something went wrong"));
+                        if (response.isSuccessFull()) return Observable.just(true);
+                        else return Observable.error(new IllegalStateException());
                     }
                 })
                 .subscribe(subscriber);

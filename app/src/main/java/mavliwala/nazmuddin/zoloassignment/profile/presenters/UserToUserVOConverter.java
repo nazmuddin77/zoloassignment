@@ -1,25 +1,25 @@
-package mavliwala.nazmuddin.data.repositories;
+package mavliwala.nazmuddin.zoloassignment.profile.presenters;
 
-import mavliwala.nazmuddin.data.database.entities.UserEntity;
 import mavliwala.nazmuddin.domain.Converter;
 import mavliwala.nazmuddin.domain.login.models.User;
+import mavliwala.nazmuddin.zoloassignment.register.models.UserVO;
 
 /**
- * Created by nazmuddinmavliwala on 28/07/17.
+ * Created by nazmuddinmavliwala on 30/07/17.
  */
 
-public class UserEntityToUserConverter implements Converter<UserEntity,User> {
-
+public class UserToUserVOConverter implements Converter<User,UserVO> {
     @Override
-    public User convert(UserEntity data) {
+    public UserVO convert(User data) {
         if (data == null) return null;
-        return new User.UserBuilder()
+        return new UserVO.UserVOBuilder()
                 .setId(data.getId())
                 .setEmail(data.getEmail())
                 .setMobile(data.getMobile())
                 .setName(data.getName())
                 .setPassword(data.getPassword())
                 .setReferralCode(data.getReferralCode())
-                .createUser();
+                .createUserVO();
+
     }
 }

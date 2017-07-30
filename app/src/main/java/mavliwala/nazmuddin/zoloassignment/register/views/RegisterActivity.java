@@ -2,7 +2,6 @@ package mavliwala.nazmuddin.zoloassignment.register.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.widget.EditText;
 
@@ -65,11 +64,6 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
                 .setPassword(getValue(R.id.et_password))
                 .setReferralCode(getValue(R.id.et_referral_code))
                 .createUserVO();
-    }
-
-    public String getValue(@IdRes int id) {
-        EditText editText = finView(id);
-        return editText.getText().toString();
     }
 
     @Override

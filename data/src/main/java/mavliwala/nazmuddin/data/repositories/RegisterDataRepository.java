@@ -78,14 +78,14 @@ public class RegisterDataRepository implements RegisterRepository {
     }
 
     @Override
-    public Observable<Response> register(User user) {
+    public Observable<Response<User>> register(User user) {
         UserEntity entity = this.userToEntityConverter.convert(user);
         return this.session.getUserEntityDao().rx()
                 .insertOrReplace(entity)
-                .switchMap(new Func1<UserEntity, Observable<Response>>() {
+                .switchMap(new Func1<UserEntity, Observable<Response<User>>>() {
                     @Override
-                    public Observable<Response> call(UserEntity userEntity) {
-                        Response response = new Response.Success();
+                    public Observable<Response<User>> call(UserEntity userEntity) {
+                        Response<User> response = new Response.Success<>(entityToUserConverter.convert(userEntity));
                         return Observable.just(response);
                     }
                 });

@@ -8,6 +8,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.hendraanggrian.rx.activity.RxActivity;
@@ -76,6 +77,11 @@ public abstract class BaseActivity extends AppCompatActivity implements
     @Override
     public void showError(String error) {
         Toast.makeText(this.context,error,Toast.LENGTH_SHORT).show();
+    }
+
+    public String getValue(@IdRes int id) {
+        EditText editText = finView(id);
+        return editText.getText().toString();
     }
 
     @Override

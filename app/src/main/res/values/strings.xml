@@ -25,4 +25,7 @@
     <string name="email_hint">EMAIL</string>
     <string name="name_hint">NAME</string>
     <string name="referral_hint">REFERRAL CODE</string>
+    <string name="profile">Profile</string>
+    <string name="edit">EDIT PROFILE</string>
+    <string name="update">UPDATE</string>
 </resources>
