@@ -95,6 +95,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
             @Override
             public void onError(Throwable e) {
                 view.hideLoading();
+                view.showError(ErrorMessageFactory.create(e));
             }
 
             @Override

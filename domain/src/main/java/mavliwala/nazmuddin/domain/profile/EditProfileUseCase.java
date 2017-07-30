@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import mavliwala.nazmuddin.domain.UseCase;
 import mavliwala.nazmuddin.domain.executers.ExecutionThread;
 import mavliwala.nazmuddin.domain.executers.PostExecutionThread;
+import mavliwala.nazmuddin.domain.forgotpassword.UnhandledException;
 import mavliwala.nazmuddin.domain.login.models.Response;
 import mavliwala.nazmuddin.domain.login.models.User;
 import rx.Observable;
@@ -34,7 +35,7 @@ public class EditProfileUseCase extends UseCase<EditProfileRepository> {
                             User user1 = response.getResponseBody();
                             return Observable.just(user1);
                         }
-                        return Observable.error(new Exception());
+                        return Observable.error(UnhandledException.createInstance());
                     }
                 })
                 .subscribe(subscriber);

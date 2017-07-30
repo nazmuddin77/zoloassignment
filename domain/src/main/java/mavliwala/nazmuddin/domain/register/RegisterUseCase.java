@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import mavliwala.nazmuddin.domain.UseCase;
 import mavliwala.nazmuddin.domain.executers.ExecutionThread;
 import mavliwala.nazmuddin.domain.executers.PostExecutionThread;
+import mavliwala.nazmuddin.domain.forgotpassword.UnhandledException;
 import mavliwala.nazmuddin.domain.login.models.Response;
 import mavliwala.nazmuddin.domain.login.models.User;
 import rx.Observable;
@@ -58,7 +59,7 @@ public class RegisterUseCase extends UseCase<RegisterRepository> {
                         //if registration is successfull return true, else return
                         // IllegalStateException
                         if (response.isSuccessFull()) return Observable.just(true);
-                        else return Observable.error(new IllegalStateException());
+                        else return Observable.error(UnhandledException.createInstance());
                     }
                 })
                 .subscribe(subscriber);

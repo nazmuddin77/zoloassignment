@@ -7,6 +7,7 @@ import mavliwala.nazmuddin.data.repositories.UserEntityToUserConverter;
 import mavliwala.nazmuddin.data.repositories.UserToEntityConverter;
 import mavliwala.nazmuddin.domain.register.RegisterRepository;
 import mavliwala.nazmuddin.zoloassignment.app.di.identifiers.ChildActivity;
+import mavliwala.nazmuddin.zoloassignment.profile.presenters.UserToUserVOConverter;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVOToUserConverter;
 import mavliwala.nazmuddin.zoloassignment.register.views.RegisterActivity;
 import mavliwala.nazmuddin.zoloassignment.register.views.RegisterView;
@@ -54,6 +55,12 @@ public class RegisterModule {
     @Provides
     public UserToEntityConverter provideDomainToDataConverter() {
         return new UserToEntityConverter();
+    }
+
+    @ChildActivity
+    @Provides
+    public UserToUserVOConverter provideConverter() {
+        return new UserToUserVOConverter();
     }
 
 }

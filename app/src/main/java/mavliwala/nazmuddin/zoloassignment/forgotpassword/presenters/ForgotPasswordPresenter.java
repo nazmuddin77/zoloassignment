@@ -10,6 +10,7 @@ import mavliwala.nazmuddin.zoloassignment.base.presenters.BasePresenter;
 import mavliwala.nazmuddin.zoloassignment.forgotpassword.views.ForgotPasswordView;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVO;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVOToUserConverter;
+import mavliwala.nazmuddin.zoloassignment.utils.ErrorMessageFactory;
 import mavliwala.nazmuddin.zoloassignment.utils.ValidationUtils;
 import rx.Subscriber;
 
@@ -57,6 +58,7 @@ public class ForgotPasswordPresenter extends BasePresenter<ForgotPasswordView> {
             @Override
             public void onError(Throwable e) {
                 view.hideLoading();
+                view.showError(ErrorMessageFactory.create(e));
             }
 
             @Override

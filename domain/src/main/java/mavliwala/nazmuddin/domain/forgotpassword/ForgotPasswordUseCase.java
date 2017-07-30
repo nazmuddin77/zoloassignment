@@ -34,7 +34,7 @@ public class ForgotPasswordUseCase extends UseCase<ForgotPasswordRepository> {
                             User user1 = response.getResponseBody();
                             return Observable.just(user1);
                         }
-                        return Observable.error(new Exception());
+                        return Observable.error(UnhandledException.createInstance());
                     }
                 })
                 .subscribe(subscriber);
