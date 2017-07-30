@@ -55,14 +55,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="14sp"
-                android:textColor="@color/white"
-                android:text="Nazmuddin Mavliwala"/>
+                android:textColor="@color/white"/>
             <ImageView
                 android:id="@+id/iv_edit_1"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:tint="@color/white"
-                android:src="@drawable/ic_call"/>
+                android:src="@drawable/ic_edit"/>
         </LinearLayout>
 
         <LinearLayout
@@ -75,7 +74,7 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:tint="@color/white"
-                android:src="@drawable/ic_call"/>
+                android:src="@drawable/ic_email"/>
 
             <TextView
                 android:id="@+id/tv_mobile"
@@ -84,14 +83,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="14sp"
-                android:textColor="@color/white"
-                android:text="Nazmuddin Mavliwala"/>
+                android:textColor="@color/white"/>
             <ImageView
                 android:id="@+id/iv_edit_2"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:tint="@color/white"
-                android:src="@drawable/ic_call"/>
+                android:src="@drawable/ic_edit"/>
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +102,7 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:tint="@color/white"
-                android:src="@drawable/ic_call"/>
+                android:src="@drawable/ic_profile"/>
 
             <TextView
                 android:id="@+id/tv_email"
@@ -113,14 +111,13 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="14sp"
-                android:textColor="@color/white"
-                android:text="Nazmuddin Mavliwala"/>
+                android:textColor="@color/white"/>
             <ImageView
                 android:id="@+id/iv_edit_3"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:tint="@color/white"
-                android:src="@drawable/ic_call"/>
+                android:src="@drawable/ic_edit"/>
         </LinearLayout>
 
 

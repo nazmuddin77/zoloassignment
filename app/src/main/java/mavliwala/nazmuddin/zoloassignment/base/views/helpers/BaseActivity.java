@@ -6,10 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.hendraanggrian.rx.activity.RxActivity;
 
@@ -24,6 +25,9 @@ import mavliwala.nazmuddin.zoloassignment.base.di.components.DaggerBaseActivityC
 import mavliwala.nazmuddin.zoloassignment.base.di.modules.BaseActivityModule;
 import mavliwala.nazmuddin.zoloassignment.base.presenters.BaseView;
 import mavliwala.nazmuddin.zoloassignment.base.views.LoaderDialog;
+
+import static android.graphics.Color.RED;
+import static android.graphics.Color.WHITE;
 
 /**
  * Created by nazmuddinmavliwala on 28/07/17.
@@ -76,7 +80,12 @@ public abstract class BaseActivity extends AppCompatActivity implements
 
     @Override
     public void showError(String error) {
-        Toast.makeText(this.context,error,Toast.LENGTH_SHORT).show();
+        Snackbar snackbar = Snackbar
+                .make(getWindow().getDecorView().getRootView(), error, Snackbar.LENGTH_LONG);
+        snackbar.getView().setBackgroundColor(WHITE);
+        TextView textView = (TextView) snackbar.getView().findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(RED);
+        snackbar.show();
     }
 
     public String getValue(@IdRes int id) {

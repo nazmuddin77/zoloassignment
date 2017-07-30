@@ -11,6 +11,7 @@ import mavliwala.nazmuddin.domain.login.models.Response;
 import mavliwala.nazmuddin.domain.login.models.User;
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Action1;
 import rx.functions.Func1;
 
 /**
@@ -61,5 +62,16 @@ public class RegisterUseCase extends UseCase<RegisterRepository> {
                     }
                 })
                 .subscribe(subscriber);
+    }
+
+    public void fetchTrueProfile(Action1<User> action1) {
+        User user = new User.UserBuilder()
+                .setEmail("nazma@gmail.com")
+                .setMobile("9892887843")
+                .setName("Nazmuddin Mavliwala")
+                .createUser();
+        Observable.just(user)
+                .compose(this.<User>applySchedulers())
+                .subscribe(action1);
     }
 }

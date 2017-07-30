@@ -11,4 +11,6 @@ public interface RegisterView extends BaseView {
     void navigateToLogin(UserVO userVO);
 
     void onSuccessFullValidation(UserVO userVO);
+
+    void bind(UserVO userVO);
 }

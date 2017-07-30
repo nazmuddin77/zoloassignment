@@ -49,7 +49,7 @@ public class LoginUseCase extends UseCase<LoginRepository> {
                             User user = response.getResponseBody();
                             return Observable.just(user);
                         }
-                        return Observable.error(new UnknownError());
+                        return Observable.error(new InvalidCredentialsException());
                     }
                 })
                 .doOnNext(new Action1<User>() {

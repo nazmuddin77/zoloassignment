@@ -50,7 +50,7 @@ public abstract class UseCase<T extends Repository> {
             @Override
             public Observable<T> call(Observable<T> observable) {
                 return observable
-                        .delay(2000, TimeUnit.MILLISECONDS)
+                        .delay(1000, TimeUnit.MILLISECONDS)
                         .subscribeOn(executionThread.getScheduler())
                         .observeOn(postExecutionThread.getScheduler());
             }

@@ -15,6 +15,7 @@ import butterknife.BindViews;
 import butterknife.OnClick;
 import mavliwala.nazmuddin.zoloassignment.R;
 import mavliwala.nazmuddin.zoloassignment.base.views.helpers.BaseActivity;
+import mavliwala.nazmuddin.zoloassignment.login.views.LoginActivity;
 import mavliwala.nazmuddin.zoloassignment.register.di.RegisterModule;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVO;
 import mavliwala.nazmuddin.zoloassignment.register.presenters.RegisterPresenter;
@@ -42,6 +43,18 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     @OnClick(R.id.bt_register)
     public void onRegisterClick() {
         this.presenter.validate(constructUser());
+    }
+
+    @OnClick(R.id.bt_truecaller)
+    public void onTrueCallerClick() {
+        this.presenter.getTrueProfile();
+    }
+
+
+    @OnClick(R.id.bt_login)
+    public void onLoginClick() {
+        this.navigator.navigate(LoginActivity.class);
+        finish();
     }
 
     @Override
@@ -77,5 +90,19 @@ public class RegisterActivity extends BaseActivity implements RegisterView {
     @Override
     public void onSuccessFullValidation(UserVO userVO) {
         this.presenter.register(userVO);
+    }
+
+    @Override
+    public void bind(UserVO userVO) {
+        if (userVO != null) {
+            EditText etName = finView(R.id.et_name);
+            etName.setText(userVO.getName());
+
+            EditText etEmail = finView(R.id.et_email);
+            etEmail.setText(userVO.getEmail());
+
+            EditText etMobile = finView(R.id.et_mobile);
+            etMobile.setText(userVO.getMobile());
+        }
     }
 }

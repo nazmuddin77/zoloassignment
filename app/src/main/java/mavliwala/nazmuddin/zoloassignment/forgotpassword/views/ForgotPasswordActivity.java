@@ -25,6 +25,7 @@ import mavliwala.nazmuddin.zoloassignment.R;
 import mavliwala.nazmuddin.zoloassignment.base.views.helpers.BaseActivity;
 import mavliwala.nazmuddin.zoloassignment.forgotpassword.di.ForgotPasswordModule;
 import mavliwala.nazmuddin.zoloassignment.forgotpassword.presenters.ForgotPasswordPresenter;
+import mavliwala.nazmuddin.zoloassignment.login.views.LoginActivity;
 import mavliwala.nazmuddin.zoloassignment.register.models.UserVO;
 
 import static mavliwala.nazmuddin.zoloassignment.register.views.RegisterActivity.USER;
@@ -45,7 +46,12 @@ public class ForgotPasswordActivity extends BaseActivity implements ForgotPasswo
     @OnClick(R.id.bt_update)
     public void onUpdateClick() {
         this.presenter.validate(getValue(R.id.et_email));
+    }
 
+    @OnClick(R.id.bt_login)
+    public void onLoginClick() {
+        this.navigator.navigate(LoginActivity.class);
+        finish();
     }
 
     private UserVO getUserVO(String newPassword) {
