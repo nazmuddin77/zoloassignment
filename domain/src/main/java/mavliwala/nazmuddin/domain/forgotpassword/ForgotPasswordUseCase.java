@@ -1,13 +1,11 @@
 package mavliwala.nazmuddin.domain.forgotpassword;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import mavliwala.nazmuddin.domain.UseCase;
 import mavliwala.nazmuddin.domain.executers.ExecutionThread;
 import mavliwala.nazmuddin.domain.executers.PostExecutionThread;
-import mavliwala.nazmuddin.domain.login.UserNotFoundException;
+import mavliwala.nazmuddin.domain.login.models.Response;
 import mavliwala.nazmuddin.domain.login.models.User;
 import rx.Observable;
 import rx.Subscriber;
@@ -26,16 +24,19 @@ public class ForgotPasswordUseCase extends UseCase<ForgotPasswordRepository> {
         super(executionThread, postExecutionThread, repository);
     }
 
-    public void authenticate(String email, Subscriber<Boolean> subscriber) {
-        this.repository.getUserWithEmail()
-                .compose(this.<List<User>>applySchedulers())
-                .switchMap(new Func1<List<User>, Observable<Boolean>>() {
+    public void updatePassword(User user, Subscriber<User> subscriber) {
+        this.repository.update(user)
+                .compose(this.<Response<User>>applySchedulers())
+                .switchMap(new Func1<Response<User>, Observable<User>>() {
                     @Override
-                    public Observable<Boolean> call(List<User> users) {
-                        if (users == null || users.size() == 0)
-                            return Observable.error(UserNotFoundException.createInstance());
-                        return Observable.just(true);
+                    public Observable<User> call(Response<User> response) {
+                        if (response.isSuccessFull()) {
+                            User user1 = response.getResponseBody();
+                            return Observable.just(user1);
+                        }
+                        return Observable.error(new Exception());
                     }
-                });
+                })
+                .subscribe(subscriber);
     }
 }

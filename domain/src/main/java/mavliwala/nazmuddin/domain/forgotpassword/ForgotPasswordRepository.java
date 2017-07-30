@@ -1,8 +1,7 @@
 package mavliwala.nazmuddin.domain.forgotpassword;
 
-import java.util.List;
-
 import mavliwala.nazmuddin.domain.Repository;
+import mavliwala.nazmuddin.domain.login.models.Response;
 import mavliwala.nazmuddin.domain.login.models.User;
 import rx.Observable;
 
@@ -11,5 +10,6 @@ import rx.Observable;
  */
 
 public interface ForgotPasswordRepository extends Repository {
-    Observable<List<User>> getUserWithEmail();
+
+    Observable<Response<User>> update(User user);
 }
