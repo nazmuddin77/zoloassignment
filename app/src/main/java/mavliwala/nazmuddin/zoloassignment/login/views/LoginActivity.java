@@ -144,17 +144,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
                         return result.resultCode == RESULT_OK;
                     }
                 })
-                .map(new Function<ActivityResult, UserVO>() {
+                .subscribe(new Consumer<ActivityResult>() {
                     @Override
-                    public UserVO apply(@NonNull ActivityResult result) throws Exception {
-                        Intent intent = result.data;
-                        return Parcels.unwrap(intent.getParcelableExtra(USER));
-                    }
-                })
-                .subscribe(new Consumer<UserVO>() {
-                    @Override
-                    public void accept(@NonNull UserVO userVO) throws Exception {
-
+                    public void accept(@NonNull ActivityResult result) throws Exception {
+                        EditText etPassword = finView(R.id.et_password);
+                        etPassword.setText("");
                     }
                 });
     }
